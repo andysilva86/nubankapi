@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nubankapi
+  name: nubankapi
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nubankapi
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: nubankapi
+    spec:
+      containers:
+        - image: gcr.io/direct-subset-266315/github.com/andysilva86/nubankapi
+          imagePullPolicy: Always
+          name: nubankapi-sha256-1
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: nubankapi
+  name: nubankapi-hpa-2evg
+  namespace: default
+spec:
+  maxReplicas: 5
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 80
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nubankapi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  finalizers:
+    - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: nubankapi
+  name: nubankapi-service
+  namespace: default
+spec:
+  clusterIP: 10.121.8.45
+  externalTrafficPolicy: Cluster
+  ports:
+    - nodePort: 31122
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: nubankapi
+  sessionAffinity: None
+  type: LoadBalancer

@@ -17,9 +17,9 @@ public class LoginService {
 		Autenticacao login = loginRepository.findByUsuarioSenha(usuario, senha);
 
 		if(login == null) {
-			throw new LoginException("Dados inseriods errados, verifique usaurio e senha"); 
+			throw new LoginException("Dados inseridos errados, verifique usuário e senha"); 
 		} else {
-			login.setStatusAutenticacao(true);
+			login.setAuthentication(true);
 		}
 		return login;
 	}

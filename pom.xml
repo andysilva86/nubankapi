@@ -66,6 +66,17 @@
    				 <artifactId>javassist</artifactId>
    			 <version>3.20.0-GA</version>
 		</dependency>
+		 <!--  Gson: Java to Json conversion -->
+        <dependency>
+          <groupId>com.google.code.gson</groupId>
+          <artifactId>gson</artifactId>
+        </dependency>
+        
+   <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-jaxrs</artifactId>
+        <version>1.9.13</version>
+    </dependency>
 	</dependencies>
 
 	<dependencyManagement>

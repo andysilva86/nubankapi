@@ -2,28 +2,51 @@ package br.com.fiap.grupo13.nubankapi.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@Table(name="TBL_TRANSACAO")
+@JsonIgnoreProperties(ignoreUnknown = true, value = {"idConta"})
 public class TransacaoCliente {
 	
+	@Id
+	@JsonIgnore
+	@Column(name="ID_TRANSACAO") 
 	private int idTransacao;
-	private int idConta;
-	private String descricaoTransacao;
-	private long valor;
-	private Date dataTransacao;
+	
+	@JsonIgnore
+	@Column(name="ID_CONTA") 
+	private int id;
+	
+	@Column(name="DESCRICAO_T") 
+	private String description;
+	
+	@Column(name="VALOR_T") 
+	private float value;
+	
+	@Column(name="DATA_T") 
+	private Date date;
 
 	public TransacaoCliente() {
 		
 	}
 	
 	public TransacaoCliente(final int idTransacao, 
-							final int idConta,
-							final String descricaoTransacao, 
-							final long valor,
-							final Date dataTransacao) {
+							final int id,
+							final String description, 
+							final float value,
+							final Date date) {
 		this.idTransacao = idTransacao;
-		this.idConta = idConta;
-		this.descricaoTransacao = descricaoTransacao;
-		this.valor = valor;
-		this.dataTransacao = dataTransacao;
+		this.id = id;
+		this.description = description;
+		this.value = value;
+		this.date = date;
 	}
 
 	public int getIdTransacao() {
@@ -35,34 +58,34 @@ public class TransacaoCliente {
 	}
 
 	public int getIdConta() {
-		return idConta;
+		return id;
 	}
 
-	public void setIdConta(int idConta) {
-		this.idConta = idConta;
+	public void setIdConta(int id) {
+		this.id = id;
 	}
 
-	public String getDescricaoTransacao() {
-		return descricaoTransacao;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescricaoTransacao(String descricaoTransacao) {
-		this.descricaoTransacao = descricaoTransacao;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public long getValor() {
-		return valor;
+	public float getValue() {
+		return value;
 	}
 
-	public void setValor(long valor) {
-		this.valor = valor;
+	public void setValue(float value) {
+		this.value = value;
 	}
 
-	public Date getDataTransacao() {
-		return dataTransacao;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setDataTransacao(Date dataTransacao) {
-		this.dataTransacao = dataTransacao;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 }

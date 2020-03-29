@@ -4,32 +4,44 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 @Table(name="TBL_CLIENTE")
+@JsonIgnoreProperties(ignoreUnknown = true, value = {"idConta"})
 public class Cliente {
 	
-	@JsonInclude
 	@Id
 	@Column(name="ID_CONTA") 
-	private int idConta;
+	private int id;
 	
-	@JsonInclude
+	@JsonIgnore
 	@Column(name="NOME") 
 	private String nome;
-	
-	@JsonInclude
+
+	@JsonIgnore
 	@Column(name="SENHA") 
 	private String senha;
 	
 	@JsonInclude
 	@Column(name="SALDO") 
-	private double saldo;
+	private float balance;
 	
 	@JsonInclude
-	@Column(name="FEATURE") 
-	private boolean featureCliente;
+	@Column(name="CREDITOFACIL") 
+	private boolean easyCredit;
+	
+	@JsonIgnore
+	@Column(name="VALOR") 
+	private float value;
+	
+	
+	@JsonIgnore
+	@Column(name="QTDMES") 
+	private int qtyMonth;
 //	
 //	@Transient
 //	private List<TransacaoCliente> transacaoCliente;
@@ -38,24 +50,28 @@ public class Cliente {
 		
 	}
 	
-	public Cliente(final int idConta, 
+	public Cliente(final int id, 
 					final String nome, 
 					final String senha,
-					final double saldo,
-					final boolean featureCliente) {
-		this.idConta = idConta;
+					final float balance,
+					final boolean easyCredit,
+					final float value,
+					final int qtyMonth) {
+		this.id = id;
 		this.nome = nome;
 		this.senha = senha;
-		this.saldo = saldo;
-		this.featureCliente = featureCliente;
+		this.balance = balance;
+		this.easyCredit = easyCredit;
+		this.value = balance;
+		this.qtyMonth = qtyMonth;
 	}
 
 	public int getIdConta() {
-		return idConta;
+		return id;
 	}
 
-	public void setIdConta(int idConta) {
-		this.idConta = idConta;
+	public void setIdConta(int id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -74,20 +90,36 @@ public class Cliente {
 		this.senha = senha;
 	}
 
-	public double getSaldo() {
-		return saldo;
+	public float getBalance() {
+		return balance;
 	}
 
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
+	public void setBalance(float balance) {
+		this.balance = balance;
 	}
 
-	public boolean isFeatureCliente() {
-		return featureCliente;
+	public boolean isEasyCredit() {
+		return easyCredit;
 	}
 
-	public void setFeatureCliente(boolean featureCliente) {
-		this.featureCliente = featureCliente;
+	public void setEasyCredit(boolean easyCredit) {
+		this.easyCredit = easyCredit;
+	}
+
+	public float getValue() {
+		return value;
+	}
+
+	public void setValue(float value) {
+		this.value = value;
+	}
+
+	public int getQtyMonth() {
+		return qtyMonth;
+	}
+
+	public void setQtyMonth(int qtyMonth) {
+		this.qtyMonth = qtyMonth;
 	}
 
 //	public List<TransacaoCliente> getTransacaoCliente() {

@@ -14,7 +14,7 @@ public class Autenticacao {
 	@JsonInclude
 	@Id
 	@Column(name="ID_USUARIO") 
-	private int idUsuario;
+	private int userId;
 	
 	@JsonInclude
 	@JsonIgnore
@@ -28,28 +28,28 @@ public class Autenticacao {
 	
 	@JsonInclude
 	@Column(name="STATUS_AUTENTICACAO") 
-	private boolean statusAutenticacao;
+	private boolean authentication;
 
 	public Autenticacao() {
 		
 	}
 	
-	public Autenticacao(final int idUsuario, 
+	public Autenticacao(final int userId, 
 					final String usuario, 
 					final String senha,
-					final boolean statusAutenticacao) {
-			this.idUsuario = idUsuario;
+					final boolean authentication) {
+			this.userId = userId;
 			this.usuario = usuario;
 			this.senha = senha;
-			this.statusAutenticacao = statusAutenticacao;
+			this.authentication = authentication;
 	}
 
-	public int getIdUsuario() {
-		return idUsuario;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getUsuario() {
@@ -68,11 +68,13 @@ public class Autenticacao {
 		this.senha = senha;
 	}
 
-	public boolean isStatusAutenticacao() {
-		return statusAutenticacao;
+	public boolean isAuthentication() {
+		return authentication;
 	}
 
-	public void setStatusAutenticacao(boolean statusAutenticacao) {
-		this.statusAutenticacao = statusAutenticacao;
+	public void setAuthentication(boolean authentication) {
+		this.authentication = authentication;
 	}
+
+
 }

@@ -1,29 +1,26 @@
 package br.com.fiap.grupo13.nubankapi.service;
 
-//import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.fiap.grupo13.nubankapi.domain.Cliente;
-import br.com.fiap.grupo13.nubankapi.exception.ClienteException;
-import br.com.fiap.grupo13.nubankapi.repository.ClienteRepository;
+import br.com.fiap.grupo13.nubankapi.domain.Autenticacao;
+import br.com.fiap.grupo13.nubankapi.exception.LoginException;
+import br.com.fiap.grupo13.nubankapi.repository.LoginRepository;
 
 @Service
 public class LoginService {
 	
 	@Autowired
-	private ClienteRepository clienteRepository;
+	private LoginRepository loginRepository;
 	
-//	public List<Cliente> buscaTodos() {
-//		return clienteRepository.findAll();
-//	}
-	
-	public Cliente buscaLogin(int idConta, String senha) {
-		Cliente cliente = clienteRepository.findByContaSenha(idConta, senha);
+	public Autenticacao buscaLogin(String usuario, String senha) {
+		Autenticacao login = loginRepository.findByUsuarioSenha(usuario, senha);
 
-		if(cliente == null) {
-			throw new ClienteException("Cliente nao encontrado"); 
+		if(login == null) {
+			throw new LoginException("Dados inseriods errados, verifique usaurio e senha"); 
+		} else {
+			login.setStatusAutenticacao(true);
 		}
-		return cliente;
+		return login;
 	}
 }

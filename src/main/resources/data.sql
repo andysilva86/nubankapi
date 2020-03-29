@@ -3,3 +3,8 @@ INSERT INTO TBL_CLIENTE (NOME,SENHA, SALDO, FEATURE) VALUES
   ('Paulo','123456', 50.00, true),
   ('Anderson', '123456', 25.00,  true),
   ('FIAP', '123456', 10000.00, true);
+
+INSERT INTO TBL_LOGIN (USUARIO, SENHA, STATUS_AUTENTICACAO) VALUES
+  ('Paulo','123456',false),
+  ('Anderson', '123456',false),
+  ('FIAP', '123456',false);

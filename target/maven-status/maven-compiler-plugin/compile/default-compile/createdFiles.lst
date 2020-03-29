@@ -1,8 +1,11 @@
-br\com\fiap\grupo13\nubankapi\domain\Cliente.class
+br\com\fiap\grupo13\nubankapi\repository\LoginRepository.class
 br\com\fiap\grupo13\nubankapi\service\ManualAPIService.class
+br\com\fiap\grupo13\nubankapi\exception\LoginException.class
+br\com\fiap\grupo13\nubankapi\NubankapiApplication.class
+br\com\fiap\grupo13\nubankapi\domain\Cliente.class
 br\com\fiap\grupo13\nubankapi\domain\TransacaoCliente.class
+br\com\fiap\grupo13\nubankapi\domain\Autenticacao.class
 br\com\fiap\grupo13\nubankapi\controller\ControllerClienteAPI.class
 br\com\fiap\grupo13\nubankapi\repository\ClienteRepository.class
 br\com\fiap\grupo13\nubankapi\exception\ClienteException.class
 br\com\fiap\grupo13\nubankapi\service\LoginService.class
-br\com\fiap\grupo13\nubankapi\NubankapiApplication.class

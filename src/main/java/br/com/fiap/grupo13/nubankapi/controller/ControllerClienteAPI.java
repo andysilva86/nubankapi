@@ -34,7 +34,7 @@ import br.com.fiap.grupo13.nubankapi.service.TransacaoService;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*", exposedHeaders = "Content-Length,Content-Range", 
-			allowCredentials = "true", 
+			allowCredentials = "false", 
 			methods = { RequestMethod.GET, RequestMethod.POST, 
 					    RequestMethod.OPTIONS, RequestMethod.DELETE} )
 public class ControllerClienteAPI {

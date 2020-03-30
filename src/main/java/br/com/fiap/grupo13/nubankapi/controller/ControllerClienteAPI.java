@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +33,7 @@ import br.com.fiap.grupo13.nubankapi.service.TransacaoFuturaService;
 import br.com.fiap.grupo13.nubankapi.service.TransacaoService;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ControllerClienteAPI {
 	
 	@Autowired
@@ -65,9 +67,9 @@ public class ControllerClienteAPI {
 		try {
 			login = loginService.buscaLogin(autDados.getUser(), autDados.getPassword());
 		}catch (ClienteException c) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).header("Access-Control-Allow-Origin","*").build();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
-		return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin","*").body(login);
+		return ResponseEntity.status(HttpStatus.OK).body(login);
 	}
 	
 	// ENDPOINT PARA RECUPERAR SALDO E FLAG CREDITO FACIL	
@@ -77,9 +79,9 @@ public class ControllerClienteAPI {
 		try {
 			contaCorrente = contaCorrenteService.buscaSaldoFlag(userId);
 		}catch (ClienteException c) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).header("Access-Control-Allow-Origin","*").build();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
-		return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin","*").body(contaCorrente);
+		return ResponseEntity.status(HttpStatus.OK).body(contaCorrente);
 	}
 	
 	// ENDPOINT PARA RECUPERAR LISTA TRANSACOES
@@ -89,9 +91,9 @@ public class ControllerClienteAPI {
 		try {
 			listaTransacao = transacaoService.buscaListaTransacao(userId);
 		}catch (ClienteException c) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).header("Access-Control-Allow-Origin","*").build();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
-		return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin","*").body(listaTransacao);
+		return ResponseEntity.status(HttpStatus.OK).body(listaTransacao);
 	}
 	
 	// ENDPOINT PARA RECUPERAR LISTA TRANSACOES FUTURAS
@@ -101,9 +103,9 @@ public class ControllerClienteAPI {
 		try {
 			listaTransacao = transacaoFuturaService.buscaListaTransacao(userId);
 		}catch (ClienteException c) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).header("Access-Control-Allow-Origin","*").build();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
-		return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin","*").body(listaTransacao);
+		return ResponseEntity.status(HttpStatus.OK).body(listaTransacao);
 	}
 
 	// ENDPOINT PARA CHAMADA VALIDACAO USUARIO NA BASE DE DADOS
@@ -114,10 +116,12 @@ public class ControllerClienteAPI {
 		try {
 			creditoFacilService.inserirProposta(crFacilDados.getUserId(),crFacilDados.getValue(),crFacilDados.getQtyMonth());
 		}catch (CreditoFacilException c) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).header("Access-Control-Allow-Origin","*").build();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
 
-		return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin","*").body("{\r\n\"result\": true\r\n}");
+		return ResponseEntity.status(HttpStatus.OK).body("{\r\n\"result\": true\r\n}");
+//		return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin","*").body("{\r\n\"result\": true\r\n}");
+
 	}
 
 }

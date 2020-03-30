@@ -65,9 +65,9 @@ public class ControllerClienteAPI {
 		try {
 			login = loginService.buscaLogin(autDados.getUser(), autDados.getPassword());
 		}catch (ClienteException c) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).header("Access-Control-Allow-Origin","*").build();
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(login);
+		return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin","*").body(login);
 	}
 	
 	// ENDPOINT PARA RECUPERAR SALDO E FLAG CREDITO FACIL	
@@ -77,9 +77,9 @@ public class ControllerClienteAPI {
 		try {
 			contaCorrente = contaCorrenteService.buscaSaldoFlag(userId);
 		}catch (ClienteException c) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).header("Access-Control-Allow-Origin","*").build();
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(contaCorrente);
+		return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin","*").body(contaCorrente);
 	}
 	
 	// ENDPOINT PARA RECUPERAR LISTA TRANSACOES
@@ -89,9 +89,9 @@ public class ControllerClienteAPI {
 		try {
 			listaTransacao = transacaoService.buscaListaTransacao(userId);
 		}catch (ClienteException c) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).header("Access-Control-Allow-Origin","*").build();
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(listaTransacao);
+		return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin","*").body(listaTransacao);
 	}
 	
 	// ENDPOINT PARA RECUPERAR LISTA TRANSACOES FUTURAS
@@ -101,9 +101,9 @@ public class ControllerClienteAPI {
 		try {
 			listaTransacao = transacaoFuturaService.buscaListaTransacao(userId);
 		}catch (ClienteException c) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).header("Access-Control-Allow-Origin","*").build();
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(listaTransacao);
+		return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin","*").body(listaTransacao);
 	}
 
 	// ENDPOINT PARA CHAMADA VALIDACAO USUARIO NA BASE DE DADOS
@@ -114,10 +114,10 @@ public class ControllerClienteAPI {
 		try {
 			creditoFacilService.inserirProposta(crFacilDados.getUserId(),crFacilDados.getValue(),crFacilDados.getQtyMonth());
 		}catch (CreditoFacilException c) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).header("Access-Control-Allow-Origin","*").build();
 		}
 
-		return ResponseEntity.status(HttpStatus.OK).body("{\r\n\"result\": true\r\n}");
+		return ResponseEntity.status(HttpStatus.OK).header("Access-Control-Allow-Origin","*").body("{\r\n\"result\": true\r\n}");
 	}
 
 }

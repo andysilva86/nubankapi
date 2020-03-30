@@ -1,7 +1,6 @@
 package br.com.fiap.grupo13.nubankapi.domain;
 
-import java.util.Date;
-
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -31,7 +30,7 @@ public class TransacaoCliente {
 	private float value;
 	
 	@Column(name="DATA_T") 
-	private Date date;
+	private LocalDate date;
 
 	public TransacaoCliente() {
 		
@@ -41,7 +40,7 @@ public class TransacaoCliente {
 							final int id,
 							final String description, 
 							final float value,
-							final Date date) {
+							final LocalDate date) {
 		this.idTransacao = idTransacao;
 		this.id = id;
 		this.description = description;
@@ -81,11 +80,11 @@ public class TransacaoCliente {
 		this.value = value;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 }

@@ -1,22 +1,27 @@
 package br.com.fiap.grupo13.nubankapi.domain;
 
-import java.util.Date;
-
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.data.annotation.Immutable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@Immutable
 @Table(name="TBL_TRANSACAOFUTURA")
 @JsonIgnoreProperties(ignoreUnknown = true, value = {"idConta"})
 public class TransacaoFutura {
 	
 	@Id
 	@JsonIgnore
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID_TRANSACAO") 
 	private int idTransacao;
 	
@@ -31,7 +36,7 @@ public class TransacaoFutura {
 	private float value;
 	
 	@Column(name="DATA_T") 
-	private Date date;
+	private LocalDate date;
 
 	public TransacaoFutura() {
 		
@@ -41,7 +46,7 @@ public class TransacaoFutura {
 							final int id,
 							final String description, 
 							final float value,
-							final Date date) {
+							final LocalDate date) {
 		this.idTransacao = idTransacao;
 		this.id = id;
 		this.description = description;
@@ -81,11 +86,11 @@ public class TransacaoFutura {
 		this.value = value;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate(LocalDate dataHoje) {
+		this.date = dataHoje;
 	}
 }

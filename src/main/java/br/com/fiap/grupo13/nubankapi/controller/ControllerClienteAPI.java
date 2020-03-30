@@ -116,7 +116,8 @@ public class ControllerClienteAPI {
 		}catch (CreditoFacilException c) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
-		return ResponseEntity.status(HttpStatus.OK).body("result");
+
+		return ResponseEntity.status(HttpStatus.OK).body("{\r\n\"result\": true\r\n}");
 	}
 
 }

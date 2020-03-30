@@ -11,4 +11,5 @@ public interface TransacaoRepository extends JpaRepository<TransacaoCliente, Lon
 
 	  @Query("SELECT t FROM TransacaoCliente t WHERE t.id = ?1")
 	   public  List<TransacaoCliente> findByIdConta(int userId);
+
 }

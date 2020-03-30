@@ -8,7 +8,6 @@ br\com\fiap\grupo13\nubankapi\domain\Autenticacao.class
 br\com\fiap\grupo13\nubankapi\model\AutenticacaoPOJO.class
 br\com\fiap\grupo13\nubankapi\controller\ControllerClienteAPI.class
 br\com\fiap\grupo13\nubankapi\repository\ClienteRepository.class
-br\com\fiap\grupo13\nubankapi\repository\CreditoFacilRepository.class
 br\com\fiap\grupo13\nubankapi\domain\TransacaoFutura.class
 br\com\fiap\grupo13\nubankapi\service\LoginService.class
 br\com\fiap\grupo13\nubankapi\service\ManualAPIService.class
@@ -17,7 +16,6 @@ br\com\fiap\grupo13\nubankapi\model\CreditoFacilPOJO.class
 br\com\fiap\grupo13\nubankapi\service\TransacaoService.class
 br\com\fiap\grupo13\nubankapi\service\ContaCorrenteService.class
 br\com\fiap\grupo13\nubankapi\domain\Cliente.class
-br\com\fiap\grupo13\nubankapi\domain\CreditoFacil.class
 br\com\fiap\grupo13\nubankapi\service\TransacaoFuturaService.class
 br\com\fiap\grupo13\nubankapi\exception\ClienteException.class
 br\com\fiap\grupo13\nubankapi\exception\TransacaoException.class

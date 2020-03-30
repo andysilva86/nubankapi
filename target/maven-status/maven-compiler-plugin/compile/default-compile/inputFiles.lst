@@ -3,7 +3,6 @@ C:\Users\newbe\Documents\nubankapi\src\main\java\br\com\fiap\grupo13\nubankapi\m
 C:\Users\newbe\Documents\nubankapi\src\main\java\br\com\fiap\grupo13\nubankapi\service\TransacaoService.java
 C:\Users\newbe\Documents\nubankapi\src\main\java\br\com\fiap\grupo13\nubankapi\domain\Autenticacao.java
 C:\Users\newbe\Documents\nubankapi\src\main\java\br\com\fiap\grupo13\nubankapi\service\LoginService.java
-C:\Users\newbe\Documents\nubankapi\src\main\java\br\com\fiap\grupo13\nubankapi\domain\CreditoFacil.java
 C:\Users\newbe\Documents\nubankapi\src\main\java\br\com\fiap\grupo13\nubankapi\exception\CreditoFacilException.java
 C:\Users\newbe\Documents\nubankapi\src\main\java\br\com\fiap\grupo13\nubankapi\service\ContaCorrenteService.java
 C:\Users\newbe\Documents\nubankapi\src\main\java\br\com\fiap\grupo13\nubankapi\repository\TransacaoFuturaRepository.java
@@ -20,5 +19,4 @@ C:\Users\newbe\Documents\nubankapi\src\main\java\br\com\fiap\grupo13\nubankapi\e
 C:\Users\newbe\Documents\nubankapi\src\main\java\br\com\fiap\grupo13\nubankapi\repository\ClienteRepository.java
 C:\Users\newbe\Documents\nubankapi\src\main\java\br\com\fiap\grupo13\nubankapi\domain\TransacaoFutura.java
 C:\Users\newbe\Documents\nubankapi\src\main\java\br\com\fiap\grupo13\nubankapi\repository\LoginRepository.java
-C:\Users\newbe\Documents\nubankapi\src\main\java\br\com\fiap\grupo13\nubankapi\repository\CreditoFacilRepository.java
 C:\Users\newbe\Documents\nubankapi\src\main\java\br\com\fiap\grupo13\nubankapi\domain\TransacaoCliente.java

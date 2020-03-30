@@ -33,7 +33,8 @@ import br.com.fiap.grupo13.nubankapi.service.TransacaoFuturaService;
 import br.com.fiap.grupo13.nubankapi.service.TransacaoService;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*", exposedHeaders = "*", 
+			allowCredentials = "*")
 public class ControllerClienteAPI {
 	
 	@Autowired

@@ -33,8 +33,10 @@ import br.com.fiap.grupo13.nubankapi.service.TransacaoFuturaService;
 import br.com.fiap.grupo13.nubankapi.service.TransacaoService;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*", exposedHeaders = "*", 
-			allowCredentials = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*", exposedHeaders = "Content-Length,Content-Range", 
+			allowCredentials = "true", 
+			methods = { RequestMethod.GET, RequestMethod.POST, 
+					    RequestMethod.OPTIONS, RequestMethod.DELETE} )
 public class ControllerClienteAPI {
 	
 	@Autowired

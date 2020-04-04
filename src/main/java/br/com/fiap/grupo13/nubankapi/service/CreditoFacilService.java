@@ -27,6 +27,7 @@ public class CreditoFacilService {
 		try {
 			Cliente clienteSelect = clienteRepository.findByIdConta(userId);
 			float saldoAtualizado = value + clienteSelect.getBalance();
+			System.out.println("SAIDA atualizacao " + saldoAtualizado);
 			clienteRepository.atualizarCliente(value, qtdmes, saldoAtualizado, userId);
 			
 		}catch(Exception e) {
@@ -39,9 +40,9 @@ public class CreditoFacilService {
 		}
 		
 		float calculoParcela = value/qtdmes;
-		System.out.println("Saida valor " + value);
-		System.out.println("Saida mes " + qtdmes);
-		System.out.println("Saida parcela " + calculoParcela);
+//		System.out.println("Saida valor " + value);
+//		System.out.println("Saida mes " + qtdmes);
+//		System.out.println("Saida parcela " + calculoParcela);
 		String descCreditoFacil = "Credito Facil Contrato";
 		
 		
@@ -54,8 +55,8 @@ public class CreditoFacilService {
 			
 			LocalDate dataHoje = LocalDate.now();
 			LocalDate somaMes = dataHoje.plusMonths(i+1);
-			System.out.println("Saida i " + i);
-			System.out.println("Saida somames " + somaMes);
+//			System.out.println("Saida i " + i);
+//			System.out.println("Saida somames " + somaMes);
 			insereCreditoFacil.setDate(somaMes);
 			transacaoFuturaRepository.save(insereCreditoFacil);
 		}

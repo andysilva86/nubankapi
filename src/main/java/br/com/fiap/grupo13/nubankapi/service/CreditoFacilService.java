@@ -26,7 +26,8 @@ public class CreditoFacilService {
 		
 		try {
 			Cliente clienteSelect = clienteRepository.findByIdConta(userId);
-			clienteRepository.atualizarCliente(value + clienteSelect.getBalance(), qtdmes, userId);
+			float saldoAtualizado = value + clienteSelect.getBalance();
+			clienteRepository.atualizarCliente(value, qtdmes, saldoAtualizado, userId);
 			
 		}catch(Exception e) {
 			throw new ClienteException("Dados nao foram inseridos " + e); 

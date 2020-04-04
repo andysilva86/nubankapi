@@ -12,6 +12,6 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 	   public  Cliente findByIdConta(int userId);
 	  
 	  @Modifying
-	  @Query("UPDATE Cliente t SET t.easyCredit = 'false', t.value = ?1 , t.qtyMonth = ?2 WHERE t.id = ?3")
-	  public void atualizarCliente(float value, int qtdmes, int userId);
+	  @Query("UPDATE Cliente t SET t.easyCredit = 'false', t.value = ?1 , t.qtyMonth = ?2, t.balance = ?3 WHERE t.id = ?4")
+	  public void atualizarCliente(float value, int qtdmes, float balance, int userId);
 }

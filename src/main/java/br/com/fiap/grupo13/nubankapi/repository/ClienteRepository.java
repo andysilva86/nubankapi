@@ -14,4 +14,5 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 	  @Modifying
 	  @Query("UPDATE Cliente t SET t.easyCredit = 'false', t.value = ?1 , t.qtyMonth = ?2, t.balance = ?3 WHERE t.id = ?4")
 	  public void atualizarCliente(float value, int qtdmes, float balance, int userId);
+	  
 }

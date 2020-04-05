@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CreditoFacilService {
 	
-	String descCreditoFacil = "Crédito Contratado";
+	String descCreditoFacil = "Crédito contratado";
 	
 	@Autowired
 	private ClienteRepository clienteRepository;

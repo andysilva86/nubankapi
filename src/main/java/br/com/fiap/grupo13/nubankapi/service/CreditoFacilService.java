@@ -16,6 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CreditoFacilService {
 	
+	String descCreditoFacil = "Crédito Contratado";
+	
 	@Autowired
 	private ClienteRepository clienteRepository;
 	
@@ -24,30 +26,22 @@ public class CreditoFacilService {
 	
 	public Cliente inserirProposta(int userId, float value, int qtdmes) {
 		
+		Cliente clienteSelect = clienteRepository.findByIdConta(userId);
+		
 		try {
-			Cliente clienteSelect = clienteRepository.findByIdConta(userId);
+			
 			float saldoAtualizado = value + clienteSelect.getBalance();
-			System.out.println("SAIDA atualizacao " + saldoAtualizado);
+//			System.out.println("SAIDA atualizacao " + saldoAtualizado);
 			clienteRepository.atualizarCliente(value, qtdmes, saldoAtualizado, userId);
 			
 		}catch(Exception e) {
 			throw new ClienteException("Dados nao foram inseridos " + e); 
 		}
-		Cliente proposta = clienteRepository.findByIdConta(userId);
-
-		if(proposta == null) {
-			throw new ClienteException("Dados nao foram inseridos"); 
-		}
-		
+		//Calculo valor parcelas
 		float calculoParcela = value/qtdmes;
-//		System.out.println("Saida valor " + value);
-//		System.out.println("Saida mes " + qtdmes);
-//		System.out.println("Saida parcela " + calculoParcela);
-		String descCreditoFacil = "Credito Facil Contrato";
-		
-		
 		
 		for (int i = 0; i < qtdmes; i++) {
+			// Montagem das parcelas na base de transacoes futuras
 			TransacaoFutura insereCreditoFacil = new TransacaoFutura();
 			insereCreditoFacil.setDescription(descCreditoFacil);
 			insereCreditoFacil.setIdConta(userId);
@@ -55,12 +49,10 @@ public class CreditoFacilService {
 			
 			LocalDate dataHoje = LocalDate.now();
 			LocalDate somaMes = dataHoje.plusMonths(i+1);
-//			System.out.println("Saida i " + i);
-//			System.out.println("Saida somames " + somaMes);
 			insereCreditoFacil.setDate(somaMes);
 			transacaoFuturaRepository.save(insereCreditoFacil);
 		}
 		
-		return proposta;
+		return clienteSelect;
 	}
 }
